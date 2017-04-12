@@ -4,6 +4,7 @@ const path = require('path')
 const ejsLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const todo = require('./routes/todo_router')
+const pageRouter = require('./routes/pages_router')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
@@ -21,12 +22,18 @@ app.use(ejsLayouts)
 
 app.set('view engine', 'ejs')
 
-// app.use('/todo', todo)
+app.use('/todos', todo)
 
-app.get('/', (req, res) => {
-  res.send('My new homepage')
-})
+//GET'/'
+//GET '/about'
+//GET '/faq'
 
-app.listen(process.env.PORT || 3000, function(){
+app.use('/', pageRouter)
+
+// app.get('/', (req, res) => {
+//   res.send('My new homepage')
+// })
+
+app.listen(process.env.PORT || 5000, function(){
   console.log('app is running');
 })
