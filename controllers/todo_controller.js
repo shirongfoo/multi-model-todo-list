@@ -27,7 +27,7 @@ let todosController = {
     })
     newTodo.save(function (err, savedEntry) {
       if (err) throw err
-      res.redirect('/todo')
+      res.redirect('/todos')
     })
   },
 
